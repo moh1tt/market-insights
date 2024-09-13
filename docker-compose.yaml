@@ -1,0 +1,49 @@
+version: '1'
+services:
+  # flask:
+  #   build:
+  #     context: ./flask-backend    # Path to Flask app folder
+  #     dockerfile: Dockerfile  # Dockerfile for Flask app
+  #   environment:
+  #     DATABASE_URL: postgresql://root:root@postgres:5432/insights
+  #   ports:
+  #     - "5001:5000"           # Expose Flask on port 5000
+  #   volumes:
+  #     - ./flask-backend:/app      # Mount the Flask app directory
+
+  # nextjs:
+  #   build:
+  #     context: ./next-frontend  # Path to Next.js app folder
+  #     dockerfile: Dockerfile  # Dockerfile for Next.js app
+  #   ports:
+  #     - "3000:3000"           # Expose Next.js on port 3000
+  #   volumes:
+  #     - ./next-frontend:/app     # Mount the Next.js app directory
+
+  postgres:
+    image: postgres:14-alpine # Use the official PostgreSQL image
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: root
+      POSTGRES_DB: insights
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data  # Persistent data volume
+
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: market-insights-pgadmin
+    ports:
+      - "8080:80"
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@insights.com
+      PGADMIN_DEFAULT_PASSWORD: admin
+    volumes:
+      - pgadmin_data:/var/lib/pgadmin
+    depends_on:
+      - postgres
+
+volumes:
+  postgres_data:
+  pgadmin_data:             # Define volume for PostgreSQL data persistence

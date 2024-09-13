@@ -10,6 +10,8 @@ interface Article {
   title: string;
   author: string;
   url: string;
+  description: string;
+  urlToImage: string;
   // Add other properties as needed
 }
 

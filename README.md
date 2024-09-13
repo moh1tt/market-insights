@@ -1,8 +1,8 @@
 # Market Insights
 
-![Website look](https://github.com/moh1tt/market-insights/blob/master/website-home.png)
-
 Market Insights is a comprehensive web application designed to provide users with up-to-date business news, weather information, and localized content. The platform offers a seamless experience for staying informed about market trends and local conditions.
+
+![Website look](https://github.com/moh1tt/market-insights/blob/master/website-home.png)
 
 ## Features
 
